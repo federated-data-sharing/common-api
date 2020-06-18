@@ -1,8 +1,0 @@
-connexion == 2.2.0
-python_dateutil == 2.6.0
-setuptools >= 21.0.0
-flask_cors
-ckan_api
-graphql-python
-pika
-requests
