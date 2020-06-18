@@ -5,7 +5,7 @@ import json
 from swagger_server.aridhia_integration import dummy_returns
 
 from swagger_server.models.dcat_metadata import DCATMetadata  # noqa: E501
-from swagger_server.models.data_dictionary import DataDictionary  # noqa: E501
+from swagger_server.models.data_dictionary_list import DataDictionaryList  # noqa: E501
 from swagger_server.models.datasets_list import DatasetsList  # noqa: E501
 from swagger_server import util
 
@@ -20,6 +20,14 @@ def datasets_datasetid_catalogue_get(datasetid):  # noqa: E501
 
     :rtype: DCATMetadata
     """
+    
+    ## TODO return 404 if dataset cannot be found
+    if datasetid == "invalid_id_nopermission":
+        return f" 401 - You do not have permission so see the dataset '{datasetid}'", 401
+    
+    ## TODO return 404 if dataset cannot be found
+    if datasetid == "invalid_id_missing":
+        return f" 404 - Dataset id '{datasetid}' cannot be found", 404
     
     r = dummy_returns.dataset_catalogue_dummy()
     response = json.loads(r)
@@ -40,15 +48,23 @@ def datasets_datasetid_dictionary_get(datasetid):  # noqa: E501
     :param datasetid: Dataset ID
     :type datasetid: str
 
-    :rtype: DataDictionary
+    :rtype: DataDictionaryList
     """
+    
+    ## TODO return 404 if dataset cannot be found
+    if datasetid == "invalid_id_nopermission":
+        return f" 401 - You do not have permission so see the dataset '{datasetid}'", 401
+    
+    ## TODO return 404 if dataset cannot be found
+    if datasetid == "invalid_id_missing":
+        return f" 404 - Dataset id '{datasetid}' cannot be found", 404
     
     r = dummy_returns.dataset_dictionary_dummy()
     response = json.loads(r)
     print(response)
     print(type(response))
-    print("Creating DataDictionary...")
-    output = DataDictionary.from_dict(response)
+    print("Creating DataDictionaryList...")
+    output = DataDictionaryList.from_dict(response)
     print(output)
     print("Returning output")
     return output

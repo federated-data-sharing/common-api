@@ -7,6 +7,9 @@ FDS_ENDPOINT = "https://localhost:8443/aridhia/federated-data-sharing/1.0.0"
 # dataset_id = 'synthetic_alzheimers_profile'
 dataset_id = 'oasis_longitudinal'
 
+# dataset_id = 'invalid_id_nopermission'
+# dataset_id = 'invalid_id_missing'
+
 def run_query_datasets_get():
     r = requests.get(f'{FDS_ENDPOINT}/datasets', verify=False)
     print(r)
@@ -52,7 +55,7 @@ def validate_json(JSON, schema):
 
 schema_datasets_list = full_schema['components']['schemas']["datasets_list"]
 schema_DCAT_metadat = full_schema['components']['schemas']["DCAT_metadata"]
-schema_data_dictionary = full_schema['components']['schemas']["data_dictionary"]
+schema_data_dictionary = full_schema['components']['schemas']["data_dictionary_list"]
 
 validate_json(dataset_list, schema_datasets_list)
 validate_json(dataset_cat, schema_DCAT_metadat)
