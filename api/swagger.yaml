@@ -8,7 +8,7 @@ servers:
 - url: https://localhost:8443/aridhia/federated-data-sharing/1.0.0/
   description: ADDI Federated Data Sharing Common API Strawman
 paths:
-  /datasets/:
+  /datasets:
     get:
       summary: Get a List of Datasets that can be Filtered
       description: Returns a list of datasets within the Dataset Registry
