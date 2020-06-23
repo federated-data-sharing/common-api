@@ -46,6 +46,8 @@ paths:
           explode: false
           schema:
             type: string
+          example:
+            "hospital_a_patient_results"
 
       responses:
         "200":
@@ -75,6 +77,8 @@ paths:
           explode: false
           schema:
             type: string
+          example:
+            "hospital_a_patient_results"
 
       responses:
         "200":
@@ -101,7 +105,7 @@ paths:
           text/plain:
             schema:
               type: string
-              example: "{synthetic_alzheimers_profile {site}}"
+              example: "{example_dataset {field1, field2, field3}}"
         required: true
 
       responses:
@@ -131,7 +135,7 @@ paths:
           text/plain:
             schema:
               type: string
-              example: "{synthetic_alzheimers_profile {site}}"
+              example: "{example_dataset {field1, field2, field3}}"
         required: true
 
       responses:
@@ -161,7 +165,7 @@ paths:
           text/plain:
             schema:
               type: string
-              example: "{synthetic_alzheimers_profile {site}}"
+              example: "{example_dataset {field1, field2, field3}}"
         required: true
 
       responses:
@@ -195,7 +199,7 @@ paths:
           text/plain:
             schema:
               type: string
-              example: "{synthetic_alzheimers_profile {site}}"
+              example: "{example_dataset {field1, field2, field3}}"
         required: true
 
       responses:
@@ -229,7 +233,7 @@ paths:
           text/plain:
             schema:
               type: string
-              example: "{synthetic_alzheimers_profile {site}}"
+              example: "{example_dataset {field1, field2, field3}}"
         required: true
 
       responses:
@@ -262,12 +266,12 @@ components:
 
       example:
         datasets:
-          - author: author
-            id: id
-            dataset_name: dataset_name
-          - author: author
-            id: id
-            dataset_name: dataset_name
+          - id: "hospital_a_patient_results"
+            dataset_name: "Hospital A Patient Results"
+            author: "John Smith"
+          - id: "medical_trial_b_results"
+            dataset_name: "Medical Trial B Results"
+            author: "Jane Jones"
 
     dataset_summary:
       description: A summary of a dataset, including the dataset ID, the dataset name, and the author of the dataset.
@@ -283,9 +287,9 @@ components:
           type: string
 
       example:
-        author: author
-        id: id
-        dataset_name: dataset_name
+        id: "hospital_a_patient_results"
+        dataset_name: "Hospital A Patient Results"
+        author: "John Smith"
 
     DCAT_metadata:
       description: A catalogue of the dataset metadata defined to the DCAT specifications.
@@ -313,17 +317,18 @@ components:
           type: object
 
       example:
-        license: license
-        creator: creator
-        contactPoint: contactPoint
-        description: description
+        id: "medical_trial_b_results"
+        title: "Medical Trail B Results"
+        description: "A description of the example medical trial and the data contained in this example."
+        creator: "Jane Jones"
+        contactPoint: "jane.jones@example.com"
         publisher:
-          name: name
-          url: url
-        id: id
-        versionInfo: versionInfo
-        additionalProperties: {}
-        title: title
+          name: "Example Medical Trial Org"
+          url: "www.examplemedicaltrial.org"
+        license: "https://creativecommons.org/licenses/by/3.0/"
+        versionInfo: "1.0"
+        additionalProperties: {additional_tags: ["tag1", "tag2", "tag3"], extra_info: "Some additional information."}
+        
 
     DCAT_metadata_publisher:
       description: An object containing the publisher name and url for the DCAT catalogue.
@@ -338,8 +343,8 @@ components:
           type: string
 
       example:
-        name: name
-        url: url
+        name: "Example Medical Trial Org"
+        url: "www.examplemedicaltrial.org"
 
     data_dictionary_list:
       description: A list of dataset dictionaries for a particular dataset.
@@ -352,38 +357,39 @@ components:
 
       example:
         dictionaries:
-          - lookups:
-              key:
-                name: name
-                description: description
-            id: id
+          - id: "dictionary_results_table_1"
             fields:
-              - name: name
-                description: description
-                label: label
-                type: type
-                constraints: constraints
-              - name: name
-                description: description
-                label: label
-                type: type
-                constraints: constraints
-          - lookups:
-              key:
-                name: name
-                description: description
-            id: id
+              - name: "sex"
+                label: "Sex"
+                type: "text"
+                description: "Sex of patient, factor with levels (F or M)"
+                constraints: "SEX"
+              - name: "age_brc"
+                label: "Age"
+                type: "text"
+                description: "Age group, of the forms 18-25 (B1), 25-50 (B2), 50+ (B3)."
+                constraints: "AGE"
+            lookups: {
+                AGE: [{name: "B1", description: "Bracket 1 - 18-25"},
+                  {name: "B2", description: "Bracket 2 - 25-50"},
+                  {name: "B3", description: "Bracket 3 - 50+"}],
+                SEX: [{name: "F", description: "female"}, {name: "M", description: "male"}]}
+          - id: "dictionary_results_table_2"
             fields:
-              - name: name
-                description: description
-                label: label
-                type: type
-                constraints: constraints
-              - name: name
-                description: description
-                label: label
-                type: type
-                constraints: constraints
+              - name: "sex"
+                label: "Sex"
+                type: "text"
+                description: "Sex of patient, factor with levels (F or M)"
+                constraints: "SEX"
+              - name: "age_brc"
+                label: "Age"
+                type: "text"
+                description: "Age group, of the forms 18-25 (B1), 25-50 (B2), 50+ (B3)."
+                constraints: "AGE"
+            lookups: {AGE: [{name: "B1", description: "Bracket 1 - 18-25"},
+                  {name: "B2", description: "Bracket 2 - 25-50"},
+                  {name: "B3", description: "Bracket 3 - 50+"}],
+                SEX: [{name: "F", description: "female"}, {name: "M", description: "male"}]}
 
     data_dictionary:
       description: An object containing the list of fields and lookups for a particular dataset table.
@@ -403,28 +409,27 @@ components:
             $ref: "#/components/schemas/data_dictionary_lookup"
 
       example:
-        lookups:
-          key:
-            name: name
-            description: description
-        id: id
+        id: "dictionary_results_table_1"
         fields:
-          - name: name
-            description: description
-            label: label
-            type: type
-            constraints: constraints
-          - name: name
-            description: description
-            label: label
-            type: type
-            constraints: constraints
+              - name: "sex"
+                label: "Sex"
+                type: "text"
+                description: "Sex of patient, factor with levels (F or M)"
+                constraints: "SEX"
+              - name: "age_brc"
+                label: "Age"
+                type: "text"
+                description: "Age group, of the forms 18-25 (B1), 25-50 (B2), 50+ (B3)."
+        lookups: {AGE: [{name: "B1", description: "Bracket 1 - 18-25"},
+            {name: "B2", description: "Bracket 2 - 25-50"},
+            {name: "B3", description: "Bracket 3 - 50+"}],
+          SEX: [{name: "F", description: "female"}, {name: "M", description: "male"}]}
 
     data_dictionary_field:
       description: A description of a field entry in the dataset table.
       required:
-        - label
         - name
+        - label
         - type
       type: object
       properties:
@@ -440,11 +445,11 @@ components:
           type: string
 
       example:
-        name: name
-        description: description
-        label: label
-        type: type
-        constraints: constraints
+        name: "sex"
+        label: "Sex"
+        type: "text"
+        description: "Sex of patient, factor with levels (F or M)"
+        constraints: "SEX"
 
     data_dictionary_lookup:
       description: A list of lookups for field entries in the dataset dictionary. The items can be arbitrarily named but follow a defined structure.
@@ -455,8 +460,8 @@ components:
     data_dictionary_lookup_inner:
       description: A lookup reference for field entries in the dataset dictionary.
       required:
-        - description
         - name
+        - description
       type: object
       properties:
         name:
@@ -465,8 +470,8 @@ components:
           type: string
 
       example:
-        name: name
-        description: description
+        name: "F" 
+        description: "female"
 
     selection_success:
       description: A object containing a boolean response for whether an action was successful or not.
