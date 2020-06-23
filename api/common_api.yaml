@@ -1,120 +1,116 @@
 openapi: 3.0.0
 
-
 info:
-  title: Federated Data Sharing Strawman with Application Flow OAuth2
-  description: A set of APIs to support different levels of data sharing. A service that implements this API can participate in a wider network.
+  title: Common API for Federated Data Sharing
+  description: |
+    A set of APIs to support different levels of data sharing in a federated network. 
+    The API has three parts Metadata, Selection and Compute. A site must implement the Metadata API, 
+    and it can either implement the Selection API or the Compute API. In the case that the Compute API
+    is implemented, the Selection API must be implemented as input to compute tasks.
   version: "1.1"
-  
-  
+
 servers:
-- url: https://localhost:8443/aridhia/federated-data-sharing/1.0.0/
-  description: ADDI Federated Data Sharing Common API Strawman
-  
-  
+  - url: https://localhost:8443/aridhia/federated-data-sharing/1.0.0/
+    description: Reference Implementation of the Common API for Federated Data Sharing
+
 paths:
-
-
   /datasets:
     get:
       summary: Get a List of Datasets that can be Filtered
       description: Returns a list of datasets within the Dataset Registry.
       operationId: datasets_get
-      
+
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/dataset_list'
+                $ref: "#/components/schemas/dataset_list"
         "401":
           description: Unauthorized (401)
       x-openapi-router-controller: common_api_server.controllers.metadata_controller
-      
-      
+
   /datasets/{datasetid}/catalogue:
     get:
       summary: Get Catalogue Entry (Metadata) for Dataset
       description: Returns a DCAT catalogue entry for specified dataset using its catalogue_id field.
       operationId: datasets_datasetid_catalogue_get
-      
+
       parameters:
-      - name: datasetid
-        in: path
-        description: Dataset ID
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-          
+        - name: datasetid
+          in: path
+          description: Dataset ID
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DCAT_metadata'
+                $ref: "#/components/schemas/DCAT_metadata"
         "401":
           description: Unauthorized (401)
         "404":
           description: Not Found (404) - Dataset not found.
       x-openapi-router-controller: common_api_server.controllers.metadata_controller
-      
-      
+
   /datasets/{datasetid}/dictionary:
     get:
       summary: Get a Dataset Dictionary
       description: Obtain a dictionary from a specified dataset using its dataset_id field.
       operationId: datasets_datasetid_dictionary_get
-      
+
       parameters:
-      - name: datasetid
-        in: path
-        description: Dataset ID
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-          
+        - name: datasetid
+          in: path
+          description: Dataset ID
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/data_dictionary_list'
+                $ref: "#/components/schemas/data_dictionary_list"
         "401":
           description: Unauthorized (401)
         "404":
           description: Not Found (404) - Dataset not found.
       x-openapi-router-controller: common_api_server.controllers.metadata_controller
-      
-      
+
   /selection/validate:
     post:
       summary: Validate a Given Selection
       description: Check whether a selection on a dataset is correct, i.e. formatted correctly and appropriate to the specified dataset.
       operationId: selection_validate_post
-      
+
       requestBody:
         description: GraphQL Query
         content:
           text/plain:
             schema:
               type: string
-              example: '{synthetic_alzheimers_profile {site}}'
+              example: "{synthetic_alzheimers_profile {site}}"
         required: true
-        
+
       responses:
         200:
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/selection_success'
+                $ref: "#/components/schemas/selection_success"
         400:
           description: Bad Request (400) - The server cannot process the request. Please check your request body.
         401:
@@ -122,30 +118,29 @@ paths:
         404:
           description: Not Found (404) - Dataset not found.
       x-openapi-router-controller: common_api_server.controllers.selection_controller
-      
-      
+
   /selection/beacon:
     post:
       summary: Get a Beacon (T/F) for a Specified Data Selection
       description: Ask a question of your data, e.g. does the dataset contain X and Y where Y=Z.
       operationId: selection_beacon_post
-      
+
       requestBody:
         description: GraphQL Query
         content:
           text/plain:
             schema:
               type: string
-              example: '{synthetic_alzheimers_profile {site}}'
+              example: "{synthetic_alzheimers_profile {site}}"
         required: true
-        
+
       responses:
         200:
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/selection_success'
+                $ref: "#/components/schemas/selection_success"
         400:
           description: Bad Request (400) - The server cannot process the request. Please check your request body.
         401:
@@ -153,23 +148,22 @@ paths:
         404:
           description: Not Found (404) - Dataset not found.
       x-openapi-router-controller: common_api_server.controllers.selection_controller
-      
-      
+
   /selection/select:
     post:
       summary: Perform a Selection Operation on a Dataset
       description: Perform a query on a dataset and obtain the full results in a tar.gz format.
       operationId: selection_select_post
-      
+
       requestBody:
         description: GraphQL Query
         content:
           text/plain:
             schema:
               type: string
-              example: '{synthetic_alzheimers_profile {site}}'
+              example: "{synthetic_alzheimers_profile {site}}"
         required: true
-        
+
       responses:
         200:
           description: OK
@@ -188,23 +182,22 @@ paths:
         404:
           description: Not Found (404) - Dataset not found.
       x-openapi-router-controller: common_api_server.controllers.selection_controller
-      
-      
+
   /selection/preview:
     post:
       summary: Preview the Results of a Selection Operation on a Dataset
       description: Perform a query on a dataset and obtain a preview of the results in a tar.gz format.
       operationId: selection_preview_post
-      
+
       requestBody:
         description: GraphQL Query
         content:
           text/plain:
             schema:
               type: string
-              example: '{synthetic_alzheimers_profile {site}}'
+              example: "{synthetic_alzheimers_profile {site}}"
         required: true
-        
+
       responses:
         200:
           description: OK
@@ -223,23 +216,22 @@ paths:
         404:
           description: Not Found (404) - Dataset not found.
       x-openapi-router-controller: common_api_server.controllers.selection_controller
-      
-      
+
   /selection/profile:
     post:
       summary: Get a Profile of a Selection Operation on a Dataset
       description: Returns a quantitative summary of the data and statistical profile.
       operationId: selection_profile_post
-      
+
       requestBody:
         description: GraphQL Query
         content:
           text/plain:
             schema:
               type: string
-              example: '{synthetic_alzheimers_profile {site}}'
+              example: "{synthetic_alzheimers_profile {site}}"
         required: true
-        
+
       responses:
         200:
           description: OK
@@ -254,39 +246,33 @@ paths:
         404:
           description: Not Found (404) - Dataset not found.
       x-openapi-router-controller: common_api_server.controllers.selection_controller
-      
-      
+
 components:
-
-
   schemas:
-  
-  
     dataset_list:
       description: A list of dataset summaries.
       required:
-      - datasets
+        - datasets
       type: object
       properties:
         datasets:
           type: array
           items:
-            $ref: '#/components/schemas/dataset_summary'
-            
+            $ref: "#/components/schemas/dataset_summary"
+
       example:
         datasets:
-        - author: author
-          id: id
-          dataset_name: dataset_name
-        - author: author
-          id: id
-          dataset_name: dataset_name
-          
-          
+          - author: author
+            id: id
+            dataset_name: dataset_name
+          - author: author
+            id: id
+            dataset_name: dataset_name
+
     dataset_summary:
       description: A summary of a dataset, including the dataset ID, the dataset name, and the author of the dataset.
       required:
-      - id
+        - id
       type: object
       properties:
         id:
@@ -295,17 +281,16 @@ components:
           type: string
         author:
           type: string
-          
+
       example:
         author: author
         id: id
         dataset_name: dataset_name
-        
-        
+
     DCAT_metadata:
       description: A catalogue of the dataset metadata defined to the DCAT specifications.
       required:
-      - id
+        - id
       type: object
       properties:
         id:
@@ -319,14 +304,14 @@ components:
         contactPoint:
           type: string
         publisher:
-          $ref: '#/components/schemas/DCAT_metadata_publisher'
+          $ref: "#/components/schemas/DCAT_metadata_publisher"
         license:
           type: string
         versionInfo:
           type: string
         additionalProperties:
           type: object
-          
+
       example:
         license: license
         creator: creator
@@ -339,25 +324,23 @@ components:
         versionInfo: versionInfo
         additionalProperties: {}
         title: title
-        
-    
+
     DCAT_metadata_publisher:
-      description: An object containing the publisher name and url for the DCAT catalogue.  
+      description: An object containing the publisher name and url for the DCAT catalogue.
       required:
-      - name
-      - url
+        - name
+        - url
       type: object
       properties:
         name:
           type: string
         url:
           type: string
-          
+
       example:
         name: name
         url: url
-        
-        
+
     data_dictionary_list:
       description: A list of dataset dictionaries for a particular dataset.
       type: object
@@ -365,48 +348,47 @@ components:
         dictionaries:
           type: array
           items:
-            $ref: '#/components/schemas/data_dictionary'
-            
+            $ref: "#/components/schemas/data_dictionary"
+
       example:
         dictionaries:
-        - lookups:
-            key:
-              name: name
-              description: description
-          id: id
-          fields:
-          - name: name
-            description: description
-            label: label
-            type: type
-            constraints: constraints
-          - name: name
-            description: description
-            label: label
-            type: type
-            constraints: constraints
-        - lookups:
-            key:
-              name: name
-              description: description
-          id: id
-          fields:
-          - name: name
-            description: description
-            label: label
-            type: type
-            constraints: constraints
-          - name: name
-            description: description
-            label: label
-            type: type
-            constraints: constraints
-            
-            
+          - lookups:
+              key:
+                name: name
+                description: description
+            id: id
+            fields:
+              - name: name
+                description: description
+                label: label
+                type: type
+                constraints: constraints
+              - name: name
+                description: description
+                label: label
+                type: type
+                constraints: constraints
+          - lookups:
+              key:
+                name: name
+                description: description
+            id: id
+            fields:
+              - name: name
+                description: description
+                label: label
+                type: type
+                constraints: constraints
+              - name: name
+                description: description
+                label: label
+                type: type
+                constraints: constraints
+
     data_dictionary:
       description: An object containing the list of fields and lookups for a particular dataset table.
       required:
-      - id
+        - id
       type: object
       properties:
         id:
@@ -414,12 +396,12 @@ components:
         fields:
           type: array
           items:
-            $ref: '#/components/schemas/data_dictionary_field'
+            $ref: "#/components/schemas/data_dictionary_field"
         lookups:
           type: object
           additionalProperties:
-            $ref: '#/components/schemas/data_dictionary_lookup'
-            
+            $ref: "#/components/schemas/data_dictionary_lookup"
+
       example:
         lookups:
           key:
@@ -427,24 +409,23 @@ components:
             description: description
         id: id
         fields:
-        - name: name
-          description: description
-          label: label
-          type: type
-          constraints: constraints
-        - name: name
-          description: description
-          label: label
-          type: type
-          constraints: constraints
-          
-          
+          - name: name
+            description: description
+            label: label
+            type: type
+            constraints: constraints
+          - name: name
+            description: description
+            label: label
+            type: type
+            constraints: constraints
+
     data_dictionary_field:
-      description: A description of a field entry in the dataset table. 
+      description: A description of a field entry in the dataset table.
       required:
-      - label
-      - name
-      - type
+        - label
+        - name
+        - type
       type: object
       properties:
         name:
@@ -457,58 +438,52 @@ components:
           type: string
         constraints:
           type: string
-          
+
       example:
         name: name
         description: description
         label: label
         type: type
         constraints: constraints
-        
-        
+
     data_dictionary_lookup:
       description: A list of lookups for field entries in the dataset dictionary. The items can be arbitrarily named but follow a defined structure.
       type: array
       items:
-        $ref: '#/components/schemas/data_dictionary_lookup_inner'
-        
+        $ref: "#/components/schemas/data_dictionary_lookup_inner"
+
     data_dictionary_lookup_inner:
       description: A lookup reference for field entries in the dataset dictionary.
       required:
-      - description
-      - name
+        - description
+        - name
       type: object
       properties:
         name:
           type: string
         description:
           type: string
-          
+
       example:
         name: name
         description: description
 
-        
     selection_success:
       description: A object containing a boolean response for whether an action was successful or not.
       type: object
       properties:
         success:
           type: boolean
-      example: 
+      example:
         success: true
-        
-        
+
   securitySchemes:
-  
-  
     oAuth2Implicit:
       type: oauth2
       flows:
         implicit:
-          authorizationUrl: https://example.org/api/authorise
+          authorizationUrl: https://example.org/api/authorize
           scopes:
             api://example_id/read_api: allows reading resources
       x-tokenInfoFunc: common_api_server.controllers.authorization_controller.check_oAuth2Implicit
       x-scopeValidateFunc: common_api_server.controllers.authorization_controller.validate_scope_oAuth2Implicit
-
