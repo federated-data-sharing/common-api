@@ -16,8 +16,8 @@ servers:
 paths:
   /datasets:
     get:
-      summary: Get a List of Datasets that can be Filtered
-      description: Returns a list of datasets within the Dataset Registry.
+      summary: Get a list of datasets
+      description: Shows the list of all datasets available for querying.
       operationId: datasets_get
 
       responses:
@@ -33,8 +33,8 @@ paths:
 
   /datasets/{datasetid}/catalogue:
     get:
-      summary: Get Catalogue Entry (Metadata) for Dataset
-      description: Returns a DCAT catalogue entry for specified dataset using its catalogue_id field.
+      summary: Get Catalogue entry (metadata) for dataset. 
+      description: Returns the metadata for a specified dataset (by dataset ID).
       operationId: datasets_datasetid_catalogue_get
 
       parameters:
@@ -62,11 +62,11 @@ paths:
           description: Not Found (404) - Dataset not found.
       x-openapi-router-controller: common_api_server.controllers.metadata_controller
 
-  /datasets/{datasetid}/dictionary:
+  /datasets/{datasetid}/dictionaries:
     get:
-      summary: Get a Dataset Dictionary
-      description: Obtain a dictionary from a specified dataset using its dataset_id field.
-      operationId: datasets_datasetid_dictionary_get
+      summary: Get a list of dataset Dictionaries.
+      description: Returns a list of field descriptions for each table within a specified dataset (by dataset ID).
+      operationId: datasets_datasetid_dictionaries_get
 
       parameters:
         - name: datasetid
@@ -92,11 +92,53 @@ paths:
         "404":
           description: Not Found (404) - Dataset not found.
       x-openapi-router-controller: common_api_server.controllers.metadata_controller
+      
+      
+  /datasets/{datasetid}/dictionaries/{tableid}:
+    get:
+      summary: Get a single Dataset Dictionary for a specified table.
+      description: Returns a set field descriptions for the specified table (by table ID) within a specified dataset (by dataset ID).
+      operationId: datasets_datasetid_dictionaries_tableid_get
+
+      parameters:
+        - name: datasetid
+          in: path
+          description: Dataset ID
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+          example:
+            "hospital_a_patient_results"
+        - name: tableid
+          in: path
+          description: Table ID
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+          example:
+            "table_1"
+
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/data_dictionary"
+        "401":
+          description: Unauthorized (401)
+        "404":
+          description: Not Found (404) - Dataset not found.
+      x-openapi-router-controller: common_api_server.controllers.metadata_controller
 
   /selection/validate:
     post:
-      summary: Validate a Given Selection
-      description: Check whether a selection on a dataset is correct, i.e. formatted correctly and appropriate to the specified dataset.
+      summary: Validate a Given selection.
+      description: With a simple GraphQL query, check whether the query is valid and corresponds to real fields at this location.
       operationId: selection_validate_post
 
       requestBody:
@@ -125,8 +167,8 @@ paths:
 
   /selection/beacon:
     post:
-      summary: Get a Beacon (T/F) for a Specified Data Selection
-      description: Ask a question of your data, e.g. does the dataset contain X and Y where Y=Z.
+      summary: Get a Beacon (T/F) for a Specified Data selection.
+      description: With a simple Graph QL query, check which locations contain data relevant to a specific query.
       operationId: selection_beacon_post
 
       requestBody:
@@ -155,8 +197,8 @@ paths:
 
   /selection/select:
     post:
-      summary: Perform a Selection Operation on a Dataset
-      description: Perform a query on a dataset and obtain the full results in a tar.gz format.
+      summary: Perform a Selection Operation on a Dataset. 
+      description: With a simple Graph QL query, returns the full selection of data in a JSON or .csv format.
       operationId: selection_select_post
 
       requestBody:
@@ -189,8 +231,8 @@ paths:
 
   /selection/preview:
     post:
-      summary: Preview the Results of a Selection Operation on a Dataset
-      description: Perform a query on a dataset and obtain a preview of the results in a tar.gz format.
+      summary: Preview the Results of a Selection Operation on a Dataset.
+      description: With a simple Graph QL query, returns a small sample of the selection in a JSON or .csv format.
       operationId: selection_preview_post
 
       requestBody:
@@ -223,8 +265,8 @@ paths:
 
   /selection/profile:
     post:
-      summary: Get a Profile of a Selection Operation on a Dataset
-      description: Returns a quantitative summary of the data and statistical profile.
+      summary: Get a profile of a selection operation on a dataset.
+      description: Returns a set of metrics for the given selection operation.
       operationId: selection_profile_post
 
       requestBody:
@@ -357,7 +399,7 @@ components:
 
       example:
         dictionaries:
-          - id: "dictionary_results_table_1"
+          - id: "table_1"
             fields:
               - name: "sex"
                 label: "Sex"
@@ -374,7 +416,7 @@ components:
                   {name: "B2", description: "Bracket 2 - 25-50"},
                   {name: "B3", description: "Bracket 3 - 50+"}],
                 SEX: [{name: "F", description: "female"}, {name: "M", description: "male"}]}
-          - id: "dictionary_results_table_2"
+          - id: "table_2"
             fields:
               - name: "sex"
                 label: "Sex"
