@@ -8,7 +8,7 @@ info:
     and it can either implement the Selection API or the Compute API. In the case that the Compute API
     is implemented, the Selection API must be implemented as input to compute tasks. Currently, the Compute API endpoints are omitted as they are under review. 
   version: "1.1.0"
-  
+
 externalDocs:
   description: Common API for Federated Data Sharing Github repository
   url: https://github.com/federated-data-sharing/common-api
@@ -95,7 +95,7 @@ paths:
       
       tags:
         - Metadata API
-
+        
 
   /datasets/{datasetid}/dictionaries:
     get:
@@ -184,7 +184,7 @@ paths:
           text/plain:
             schema:
               type: string
-              example: "{example_dataset {field1, field2, field3}}"
+              example: "{hospital_b_patient_results {table_1 {sex, age}}"
         required: true
 
       responses:
@@ -216,7 +216,7 @@ paths:
           text/plain:
             schema:
               type: string
-              example: "{example_dataset {field1, field2, field3}}"
+              example: "{hospital_b_patient_results {table_1 {sex, age}}"
         required: true
 
       responses:
@@ -248,7 +248,7 @@ paths:
           text/plain:
             schema:
               type: string
-              example: "{example_dataset {field1, field2, field3}}"
+              example: "{hospital_b_patient_results {table_1 {sex, age}}"
         required: true
 
       responses:
@@ -284,7 +284,7 @@ paths:
           text/plain:
             schema:
               type: string
-              example: "{example_dataset {field1, field2, field3}}"
+              example: "{hospital_b_patient_results {table_1 {sex, age}}"
         required: true
 
       responses:
@@ -320,7 +320,7 @@ paths:
           text/plain:
             schema:
               type: string
-              example: "{example_dataset {field1, field2, field3}}"
+              example: "{hospital_b_patient_results {table_1 {sex, age}}"
         required: true
 
       responses:
@@ -339,7 +339,7 @@ paths:
           
       tags:
         - Selection API
-   
+
       
   /health_check:
     get:
@@ -354,6 +354,7 @@ paths:
                 
       tags:
         - Health Check
+
 
 components:
   schemas:
@@ -405,7 +406,9 @@ components:
         catalogue:
           $ref: "#/components/schemas/DCAT_metadata"
         dictionaries:
-          $ref: "#/components/schemas/data_dictionary_list"
+          type: array
+          items:
+            $ref: "#/components/schemas/data_dictionary"
       
     DCAT_metadata:
       description: A catalogue of the dataset metadata defined to the DCAT specifications.
@@ -525,7 +528,7 @@ components:
             $ref: "#/components/schemas/data_dictionary_lookup"
 
       example:
-        id: "dictionary_results_table_1"
+        id: "table_1"
         fields:
               - name: "sex"
                 label: "Sex"
