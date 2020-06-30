@@ -34,12 +34,14 @@ Details of each endpoint:
 
 |Endpoint                                             |HTTP   |Summary                                                    |
 |:----------------------------------------------------|:------|:----------------------------------------------------------|
-|`/datasets`                                          |`GET`  |Get a list of datasets. Shows the list of all datasets available for querying. |
-|`/datasets/{datasetid}/catalogue`                    |`GET`  |Get Catalogue entry (metadata) for dataset. Returns the metadata for a specified dataset (by dataset ID). |
-|`/datasets/{datasetid}/dictionaries`                 |`GET`  |Get a list of dataset Dictionaries. Returns a list of field descriptions for each table within a specified dataset (by dataset ID). |
-|`/datasets/{datasetid}/dictionaries/{tableid}`       |`GET`  |Get a single Dataset Dictionary for a specified table. Returns a set field descriptions for the specified table (by table ID) within a specified dataset (by dataset ID). |
-|`/selection/validate`                                |`POST` |Validate a Given selection. With a simple GraphQL query, check whether the query is valid and corresponds to real fields at this location.  |
-|`/selection/beacon`                                  |`POST` |Get a Beacon (T/F) for a Specified Data selection. With a simple Graph QL query, check which locations contain data relevant to a specific query. |
-|`/selection/select`                                  |`POST` |Perform a Selection Operation on a Dataset. With a simple Graph QL query, returns the full selection of data in a JSON or .csv format. |
-|`/selection/preview`                                 |`POST` |Preview the Results of a Selection Operation on a Dataset. With a simple Graph QL query, returns a small sample of the selection in a JSON or .csv format.  |
-|`/selection/profile`                                 |`POST` |Get a profile of a selection operation on a dataset. Returns a set of metrics for the given selection operation  |
+|`/datasets`                                          |`GET`  |Get a list of available datasets. Shows the list of all datasets available for querying. |
+|`/datasets/{datasetid}`                              |`GET`  |Get Catalogue entry (metadata) and Dictionaries (field descriptions) for dataset. Returns the catalogue metadata and a list of field descriptions for a specified dataset (by dataset ID). |
+|`/datasets/{datasetid}/catalogue`                    |`GET`  |Get Catalogue entry (metadata) for dataset. Returns the catalogue metadata for a specified dataset (by dataset ID). |
+|`/datasets/{datasetid}/dictionaries`                 |`GET`  |Get Dictionaries (field descriptions) for dataset. Returns a list of field descriptions for each table within a specified dataset (by dataset ID). |
+|`/datasets/{datasetid}/dictionaries/{tableid}`       |`GET`  |Get a single dataset Dictionary for a specified table. Returns a set field descriptions for the specified table (by table ID) within a specified dataset (by dataset ID). |
+|`/selection/validate`                                |`POST` |Validate a given selection query. With a simple GraphQL query, check whether the query is valid and corresponds to real fields at this location.  |
+|`/selection/beacon`                                  |`POST` |Get a Beacon (T/F) for a specified data selection. With a simple Graph QL query, check which locations contain data relevant to a specific query. |
+|`/selection/select`                                  |`POST` |Perform a selection operation on a dataset. With a simple Graph QL query, returns the full selection of data in a JSON or .csv format. |
+|`/selection/preview`                                 |`POST` |Preview the results of a selection operation on a dataset. With a simple Graph QL query, returns a small sample of the selection in a JSON or .csv format.  |
+|`/selection/profile`                                 |`POST` |Get a profile of a selection operation on a dataset. Returns a set of metrics for the given selection operation.  |
+|`/health_check`                                      |`GET` |Get a health check of the service. |
