@@ -8,14 +8,17 @@ info:
     and it can either implement the Selection API or the Compute API. In the case that the Compute API
     is implemented, the Selection API must be implemented as input to compute tasks. Currently, the Compute API endpoints are omitted as they are under review. 
   version: "1.1.0"
+  
+externalDocs:
+  description: Common API for Federated Data Sharing Github repository
+  url: https://github.com/federated-data-sharing/common-api
+
 
 paths:
   /datasets:
     get:
       summary: Get a list of available datasets.
       description: Shows the list of all datasets available for querying.
-      operationId: datasets_get
-
       responses:
         "200":
           description: OK
@@ -25,14 +28,15 @@ paths:
                 $ref: "#/components/schemas/dataset_list"
         "401":
           description: Unauthorized (401)
-      x-openapi-router-controller: common_api_server.controllers.metadata_controller
+          
+      tags:
+        - Metadata API
    
    
   /datasets/{datasetid}:
     get:
       summary: Get Catalogue entry (metadata) and Dictionaries (field descriptions) for dataset.
       description: Returns the catalogue metadata and a list of field descriptions for a specified dataset (by dataset ID).
-      operationId: datasets_datasetid_get
       
       parameters:
         - name: datasetid
@@ -55,14 +59,15 @@ paths:
                 $ref: "#/components/schemas/dataset_information"
         "401":
           description: Unauthorized (401)
-      x-openapi-router-controller: common_api_server.controllers.metadata_controller
+          
+      tags:
+        - Metadata API
       
       
   /datasets/{datasetid}/catalogue:
     get:
       summary: Get Catalogue entry (metadata) for dataset. 
       description: Returns the catalogue metadata for a specified dataset (by dataset ID).
-      operationId: datasets_datasetid_catalogue_get
 
       parameters:
         - name: datasetid
@@ -87,13 +92,15 @@ paths:
           description: Unauthorized (401)
         "404":
           description: Not Found (404) - Dataset not found.
-      x-openapi-router-controller: common_api_server.controllers.metadata_controller
+      
+      tags:
+        - Metadata API
+
 
   /datasets/{datasetid}/dictionaries:
     get:
       summary: Get Dictionaries (field descriptions) for dataset.
       description: Returns a list of field descriptions for each table within a specified dataset (by dataset ID).
-      operationId: datasets_datasetid_dictionaries_get
 
       parameters:
         - name: datasetid
@@ -118,14 +125,15 @@ paths:
           description: Unauthorized (401)
         "404":
           description: Not Found (404) - Dataset not found.
-      x-openapi-router-controller: common_api_server.controllers.metadata_controller
+          
+      tags:
+        - Metadata API
       
       
   /datasets/{datasetid}/dictionaries/{tableid}:
     get:
       summary: Get a single dataset Dictionary for a specified table.
       description: Returns a set field descriptions for the specified table (by table ID) within a specified dataset (by dataset ID).
-      operationId: datasets_datasetid_dictionaries_tableid_get
 
       parameters:
         - name: datasetid
@@ -160,14 +168,16 @@ paths:
           description: Unauthorized (401)
         "404":
           description: Not Found (404) - Dataset not found.
-      x-openapi-router-controller: common_api_server.controllers.metadata_controller
+          
+      tags:
+        - Metadata API
+
 
   /selection/validate:
     post:
       summary: Validate a given selection query.
       description: With a simple GraphQL query, check whether the query is valid and corresponds to real fields at this location.
-      operationId: selection_validate_post
-
+      
       requestBody:
         description: GraphQL Query
         content:
@@ -190,13 +200,15 @@ paths:
           description: Unauthorized (401)
         404:
           description: Not Found (404) - Dataset not found.
-      x-openapi-router-controller: common_api_server.controllers.selection_controller
+          
+      tags:
+        - Selection API
+
 
   /selection/beacon:
     post:
       summary: Get a Beacon (T/F) for a specified data selection.
       description: With a simple Graph QL query, check which locations contain data relevant to a specific query.
-      operationId: selection_beacon_post
 
       requestBody:
         description: GraphQL Query
@@ -220,13 +232,15 @@ paths:
           description: Unauthorized (401)
         404:
           description: Not Found (404) - Dataset not found.
-      x-openapi-router-controller: common_api_server.controllers.selection_controller
+      
+      tags:
+        - Selection API
+
 
   /selection/select:
     post:
       summary: Perform a selection operation on a dataset. 
       description: With a simple Graph QL query, returns the full selection of data in a JSON or .csv format.
-      operationId: selection_select_post
 
       requestBody:
         description: GraphQL Query
@@ -254,13 +268,15 @@ paths:
           description: Unauthorized (401)
         404:
           description: Not Found (404) - Dataset not found.
-      x-openapi-router-controller: common_api_server.controllers.selection_controller
+          
+      tags:
+        - Selection API
+
 
   /selection/preview:
     post:
       summary: Preview the results of a selection operation on a dataset.
       description: With a simple Graph QL query, returns a small sample of the selection in a JSON or .csv format.
-      operationId: selection_preview_post
 
       requestBody:
         description: GraphQL Query
@@ -288,13 +304,15 @@ paths:
           description: Unauthorized (401)
         404:
           description: Not Found (404) - Dataset not found.
-      x-openapi-router-controller: common_api_server.controllers.selection_controller
+          
+      tags:
+        - Selection API
+
 
   /selection/profile:
     post:
       summary: Get a profile of a selection operation on a dataset.
       description: Returns a set of metrics for the given selection operation.
-      operationId: selection_profile_post
 
       requestBody:
         description: GraphQL Query
@@ -318,7 +336,10 @@ paths:
           description: Unauthorized (401)
         404:
           description: Not Found (404) - Dataset not found.
-      x-openapi-router-controller: common_api_server.controllers.selection_controller
+          
+      tags:
+        - Selection API
+   
       
   /health_check:
     get:
@@ -330,6 +351,9 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/health_check"
+                
+      tags:
+        - Health Check
 
 components:
   schemas:
