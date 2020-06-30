@@ -6,17 +6,13 @@ info:
     A set of APIs to support different levels of data sharing in a federated network. 
     The API has three parts Metadata, Selection and Compute. A site must implement the Metadata API, 
     and it can either implement the Selection API or the Compute API. In the case that the Compute API
-    is implemented, the Selection API must be implemented as input to compute tasks.
-  version: "1.1"
-
-servers:
-  - url: https://localhost:8443/aridhia/federated-data-sharing/1.0.0/
-    description: Reference Implementation of the Common API for Federated Data Sharing
+    is implemented, the Selection API must be implemented as input to compute tasks. Currently, the Compute API endpoints are omitted as they are under review. 
+  version: "1.1.0"
 
 paths:
   /datasets:
     get:
-      summary: Get a list of datasets
+      summary: Get a list of available datasets.
       description: Shows the list of all datasets available for querying.
       operationId: datasets_get
 
@@ -30,11 +26,42 @@ paths:
         "401":
           description: Unauthorized (401)
       x-openapi-router-controller: common_api_server.controllers.metadata_controller
-
+   
+   
+  /datasets/{datasetid}:
+    get:
+      summary: Get Catalogue entry (metadata) and Dictionaries (field descriptions) for dataset.
+      description: Returns the catalogue metadata and a list of field descriptions for a specified dataset (by dataset ID).
+      operationId: datasets_datasetid_get
+      
+      parameters:
+        - name: datasetid
+          in: path
+          description: Dataset ID
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+          example:
+            "hospital_a_patient_results"
+            
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/dataset_information"
+        "401":
+          description: Unauthorized (401)
+      x-openapi-router-controller: common_api_server.controllers.metadata_controller
+      
+      
   /datasets/{datasetid}/catalogue:
     get:
       summary: Get Catalogue entry (metadata) for dataset. 
-      description: Returns the metadata for a specified dataset (by dataset ID).
+      description: Returns the catalogue metadata for a specified dataset (by dataset ID).
       operationId: datasets_datasetid_catalogue_get
 
       parameters:
@@ -64,7 +91,7 @@ paths:
 
   /datasets/{datasetid}/dictionaries:
     get:
-      summary: Get a list of dataset Dictionaries.
+      summary: Get Dictionaries (field descriptions) for dataset.
       description: Returns a list of field descriptions for each table within a specified dataset (by dataset ID).
       operationId: datasets_datasetid_dictionaries_get
 
@@ -96,7 +123,7 @@ paths:
       
   /datasets/{datasetid}/dictionaries/{tableid}:
     get:
-      summary: Get a single Dataset Dictionary for a specified table.
+      summary: Get a single dataset Dictionary for a specified table.
       description: Returns a set field descriptions for the specified table (by table ID) within a specified dataset (by dataset ID).
       operationId: datasets_datasetid_dictionaries_tableid_get
 
@@ -137,7 +164,7 @@ paths:
 
   /selection/validate:
     post:
-      summary: Validate a Given selection.
+      summary: Validate a given selection query.
       description: With a simple GraphQL query, check whether the query is valid and corresponds to real fields at this location.
       operationId: selection_validate_post
 
@@ -167,7 +194,7 @@ paths:
 
   /selection/beacon:
     post:
-      summary: Get a Beacon (T/F) for a Specified Data selection.
+      summary: Get a Beacon (T/F) for a specified data selection.
       description: With a simple Graph QL query, check which locations contain data relevant to a specific query.
       operationId: selection_beacon_post
 
@@ -197,7 +224,7 @@ paths:
 
   /selection/select:
     post:
-      summary: Perform a Selection Operation on a Dataset. 
+      summary: Perform a selection operation on a dataset. 
       description: With a simple Graph QL query, returns the full selection of data in a JSON or .csv format.
       operationId: selection_select_post
 
@@ -231,7 +258,7 @@ paths:
 
   /selection/preview:
     post:
-      summary: Preview the Results of a Selection Operation on a Dataset.
+      summary: Preview the results of a selection operation on a dataset.
       description: With a simple Graph QL query, returns a small sample of the selection in a JSON or .csv format.
       operationId: selection_preview_post
 
@@ -292,6 +319,17 @@ paths:
         404:
           description: Not Found (404) - Dataset not found.
       x-openapi-router-controller: common_api_server.controllers.selection_controller
+      
+  /health_check:
+    get:
+      summary: Get a health check of the service.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/health_check"
 
 components:
   schemas:
@@ -332,7 +370,19 @@ components:
         id: "hospital_a_patient_results"
         dataset_name: "Hospital A Patient Results"
         author: "John Smith"
-
+    
+    dataset_information:
+      description: A combined object of metadata from the catalogue entry and the dictionary field descriptions.
+      required:
+        - catalogue
+        - dictionaries
+      type: object
+      properties:
+        catalogue:
+          $ref: "#/components/schemas/DCAT_metadata"
+        dictionaries:
+          $ref: "#/components/schemas/data_dictionary_list"
+      
     DCAT_metadata:
       description: A catalogue of the dataset metadata defined to the DCAT specifications.
       required:
@@ -523,6 +573,19 @@ components:
           type: boolean
       example:
         success: true
+        
+    health_check:
+      description: A response
+      type: object
+      properties:
+        version:
+          type: string
+        health_check:
+          type: boolean
+      example:
+        version: "1.1.0"
+        health_check: true
+        
 
   securitySchemes:
     oAuth2Implicit:
