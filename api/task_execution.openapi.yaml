@@ -173,10 +173,11 @@ paths:
         in: path
         required: true
         description: Task ID
-  /tasks/validate:
+  '/tasks/validate':
     post:
       summary: Validate a Task
-      tags: []
+      tags:
+        - TaskService
       responses:
         '200':
           description: OK
@@ -201,8 +202,6 @@ paths:
             schema:
               $ref: '#/components/schemas/tesTask'
       description: Validate a Task
-    tags:
-      - TaskService
 servers:
   - url: /ga4gh/tes/v1
 components:
@@ -471,9 +470,7 @@ components:
           items:
             type: string
         registries:
-          type:
-            - string
-            - array
+          type: array
           items:
             type: object
             properties:
