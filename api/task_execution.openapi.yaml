@@ -201,6 +201,8 @@ paths:
             schema:
               $ref: '#/components/schemas/tesTask'
       description: Validate a Task
+      tags:
+        - TaskService
 servers:
   - url: /ga4gh/tes/v1
 components:
