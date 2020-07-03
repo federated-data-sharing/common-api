@@ -1,0 +1,9 @@
+[submodule "common-api-metadata"]
+	path = common-api-metadata
+	url = https://github.com/federated-data-sharing/common-api-metadata
+[submodule "common-api-selection"]
+	path = common-api-selection
+	url = https://github.com/federated-data-sharing/common-api-selection
+[submodule "common-api-tasks"]
+	path = common-api-tasks
+	url = https://github.com/federated-data-sharing/common-api-tasks
