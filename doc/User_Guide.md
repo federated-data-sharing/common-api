@@ -11,6 +11,12 @@ The provides a standard interface for data sharing protocols to connect between 
 3. Selecting data directly for centralised analysis or using federated **tasks** (computation) to process a selection
 4. **Combining results** from analysing data at source to produce a final report (e.g. a chart).
 
+Examples are provided in:
+
+- [curl](#command-line---using-curl-and-jq)
+- [python](#using-python)
+- [R](#using-r)
+
 ## Implementation options
 
 Sites are also free to implement the API as they wish but there are some conventions expected. We expect sites to implement in one of two modes:
