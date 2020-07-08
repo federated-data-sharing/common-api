@@ -30,9 +30,9 @@ For maximum flexibility each section of the Common API is defined in separate su
 
 | Mode     | Metadata                     | Selection & Filtering of record-level data          | Federated compute on record level data.                |
 |:---------|:-----------------------------|:----------------------------------------------------|:-------------------------------------------------------|
-| Level&nbps;0  | Can be queried and retrieved | Can be queried remotely and transferred to a client | Federation not required, computation happens at client |
-| Level&nbps;1  | Can be queried and retrieved | Can be queried remotely and transferred to a client | Federation not required, computation happens at client |
-| Level&nbps;2  | Can be queried and retrieved | Not permitted                                       | Containerised computations can be executed remotely with<br>selection query input, approved results returned  |
+| Level&nbsp;0  | Can be queried and retrieved | Can be queried remotely and transferred to a client | Federation not required, computation happens at client |
+| Level&nbsp;1  | Can be queried and retrieved | Can be queried remotely and transferred to a client | Federation not required, computation happens at client |
+| Level&nbsp;2  | Can be queried and retrieved | Not permitted                                       | Containerised computations can be executed remotely with<br>selection query input, approved results returned  |
 
 Details of each endpoint:
 
