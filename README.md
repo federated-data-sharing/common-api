@@ -8,7 +8,7 @@ This repository contains OpenAPI definitions for the Common API for Federated Da
 
 The code is licensed under the [Mozilla Public License 2.0](https://www.mozilla.org/en-US/MPL/2.0/) see [LICENSE](./LICENSE). 
 
-As more organisations are joining the effort, a new governance process will be established. In the meantime, please contact [Aridhia Informatics](https://www.aridhia.com/contact-our-team/) for more information.
+The project was [originally](./doc/Origins.md) part of an international collaboration on sharing data in clinical research. We now welcome contributions from a wider community. As more organisations are joining the effort, a new governance process will be established. In the meantime, please contact [Aridhia Informatics](https://www.aridhia.com/contact-our-team/) for more information.
 
 ## API overview
 
