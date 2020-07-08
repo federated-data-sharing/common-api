@@ -164,7 +164,7 @@ curl $curl_opts -X GET -H "Accept: application/json"\
       | jq -r '.dictionaries[].id'
 ```
 
-### Data Selection
+### Data selection
 
 Selection currently uses [GraphQL](https://graphql.org/) as a format for defining selections and filters on data. An example is provided in [src/examples/example-query.graphql](src/examples/example-query.graphql). This is intended as an abstraction from underlying query mechanisms such as SQL.
 
@@ -192,7 +192,6 @@ The other endpoints `/selection/beacon`, `/selection/preview`, `/selection/profi
 > TODO - pending updating the task API
 
 ## Using Python
-
 
 Examples below follow the same pattern as those using `curl` above. The `requests` library is recommended. Use Python shell to run the commands below, Jupyter Notebook or create and execute a `.py` file.
 
@@ -255,6 +254,11 @@ headers = {'Content-type': 'plain/text', 'Accept': 'application/json' }
 r = requests.post(f'{FDS_ENDPOINT}/selection/select', data = query, headers=headers, verify=False)
 data = r.json()
 ```
+
+### Tasks using federated computation
+
+> TODO - pending updating the task API
+
 ## Using R
 
 For R interacting with an API, the [`httr`](https://httr.r-lib.org/) library is recommended. This can be done interactively, or in an `.R` script. The examples below are at an R console prompt (`>`). The [tidyverse libraries](https://www.tidyverse.org/) and related libraries for processing JSON are recommended and used in the examples below.
@@ -308,7 +312,7 @@ In what follows, if you have a token, add the following to `GET` and `POST` call
 ```R
 add_headers(Authorization=paste('Bearer', access_token, sep=" "))
 ```
-### Examples: Data Discovery
+### Data Discovery
 
 To get the dataset list using an `httr` `GET()` call:
 ```R
@@ -323,7 +327,7 @@ r <- GET(paste0(FDS_ENDPOINT, '/datasets/', dataset_id, '/dictionaries'))
 resp <- content(r, 'text', encoding='UTF-8')
 dictionaries <- fromJSON(resp, flatten=TRUE)
 ```
-### Examples: Data selection
+### Data selection
 
 To validate a query:
 ```R 
