@@ -49,3 +49,5 @@ Details of each endpoint:
 |`/selection/preview`                                 |`POST` |Preview the results of a selection operation on a dataset. With a simple Graph QL query, returns a small sample of the selection in a JSON or .csv format.  |
 |`/selection/profile`                                 |`POST` |Get a profile of a selection operation on a dataset. Returns a set of metrics for the given selection operation.  |
 |`/health_check`                                      |`GET` |Get a health check of the service. |
+
+For detailed examples, refer to the [User Guide](./doc/User_Guide.md)
