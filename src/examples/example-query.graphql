@@ -1,0 +1,9 @@
+{
+    synthetic_alzheimers_profile {
+        sex
+        age_at_inclusion
+        cdr_global_score_baseline
+        abeta_1_42_year_1
+        hippocampal_volume_year_1
+    }
+}
