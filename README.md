@@ -53,7 +53,6 @@ Details of each endpoint:
 |`/tasks`                                             |`POST` |Create a new task using a task specification (links a selection query and containerised computation task)|
 |`/tasks/validate`                                    |`POST` |Validate a task specification|
 |`/tasks/{task_id}`                                   |`GET`  |Get task details including status. If available, includes a link to the output of the task|
-
 |`/tasks/{task_id}/cancel`                            |`POST` |Cancel a task|
 |`/health_check`                                      |`GET`  |Get a health check of the service. |
 
