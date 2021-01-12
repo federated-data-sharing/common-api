@@ -48,6 +48,12 @@ Details of each endpoint:
 |`/selection/select`                                  |`POST` |Perform a selection operation on a dataset. With a simple Graph QL query, returns the full selection of data in a JSON or .csv format. |
 |`/selection/preview`                                 |`POST` |Preview the results of a selection operation on a dataset. With a simple Graph QL query, returns a small sample of the selection in a JSON or .csv format.  |
 |`/selection/profile`                                 |`POST` |Get a profile of a selection operation on a dataset. Returns a set of metrics for the given selection operation.  |
-|`/health_check`                                      |`GET` |Get a health check of the service. |
+|`/tasks/service-info`                                |`GET`  |Get service information about the service,such as storage details, resource availability, and other documentation|
+|`/tasks`                                             |`GET`  |Get a list of of tasks for the current user|
+|`/tasks`                                             |`POST` |Create a new task using a task specification (links a selection query and containerised computation task)|
+|`/tasks/validate`                                    |`POST` |Validate a task specification|
+|`/tasks/{task_id}`                                   |`GET`  |Get task details including status. If available, includes the output of the task|
+|`/tasks/{task_id}/cancel`                            |`POST` |Cancel a task|
+|`/health_check`                                      |`GET`  |Get a health check of the service. |
 
 For detailed examples, refer to the [User Guide](./doc/User_Guide.md)
