@@ -1,10 +1,18 @@
-# Analysis plans in a federated settings 
+# Analysis plans in a federated setting
 
 > Back to the [main page](./User_Guide.md)
 
 ## Getting started
 
 As a scientist, statistician or data scientist, you may be used to developing scripts working directly with data - your `R` or `python` scripts can load the data directly, or maybe you're using a spreadsheet package or a statistical tool which wraps up the analysis plan for you. If you're using federated analysis this may not be an option for you - the data is held remotely. Your interaction with the data will be via the programming interface ("API") or a tool that uses it. Whereas you would normally expect a high degree of iteration (or "trial and error") when working with local data, you need to plan for a different form of iteration.
+
+## Trade-offs
+
+Most existing clinical research and statistics as well as the supporting libraries, assumes data is adjacent to scripts. You will be using a federated model because data providers cannot share data directly with you. As a result, in a federated setting, your analysis plan will need to be adapted in a few ways:
+
+- Adopt a “scatter/gather” approach across partitioned, separate data silos
+- Package up some of the analysis into Docker containers and queries 
+- Develop scripts to orchestrate the whole thing for reproducibility
 
 Data platforms that implement the Common API commit to helping reduce the friction of remote access in a number of ways intended to help you:
 
@@ -19,6 +27,10 @@ In return, you should revisit your analysis plan and structure it to the remote 
 - whether you will be interacting with a mix of nodes at different levels of sharing (also known as "Level 0", "Level 1" or "Level 2" nodes)
 - setting a number of stages or phases for your analysis in order to get early feedback on the process and build trust in the data and your connection with the remote sites.
 - whether integrating data from multiple sources is important for your analysis algorithm (for example to develop a machine learning model)
+
+> Over time, we expect community efforts to provide standard modules and distributed versions of algorithms. See [Worked Examples](https://github.com/federated-data-sharing/common-api-examples) for some starting points.
+
+## What can you run in a federated model?
 
 Examples of staging or phasing analysis might reflect a standard research or data science life cycle:
 
