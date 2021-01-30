@@ -2,12 +2,43 @@
 
 ## Introduction
 
-This repository contains OpenAPI definitions for the Common API for Federated Data Sharing. The API was original developed to facilitate collaboration and trusted data sharing networks between trusted research environments and data repositories. 
+This repository contains OpenAPI definitions for the Common API for Federated Data Sharing. The Common API was originally developed to facilitate collaboration and trusted data sharing networks between trusted research environments and data providers.
+
+## Documentation
 
 - [API Overview](./doc/API_Overview.md)
 - [User Guide](./doc/User_Guide.md)
-- [Origins](./doc/Origins.md)
 - [Worked Examples](https://github.com/federated-data-sharing/common-api-examples)
+- Reference implementation - Coming Soon
+- [Origins](./doc/Origins.md)
+
+## For Data providers
+
+A data provider may be an existing data repository or platform, or groups managing research data at their institutions. They have complex and varying data governance constraints and technical capabiliities which means that contributing data to research projects or more data sharing in a network may be difficult.
+
+The Common API approach allows data providers to choose how they join a collaboration network.
+
+- Level 0: transferring data directly for hosting to a trusted research environment (TRE)
+- Level 1: providing remote access to data
+- Level 2: providing a  data providers and data users in biomedical reserach 
+
+Level 0 is provided by a TRE, while data providers must implement Level 1 or Level 2 using their own infrastructure.
+
+Data providers are often in multiple collaborations at the same time. Investment in a Level 1 and Level 2 implementation can be repurposed for more than one network.
+
+> A reference implementation is being developed to facilitate the technical choices for data providers.
+
+## For Data users
+
+A researcher or group of researchers working with multiple data sources have to navigate varying access mechanisms and APIs. By working in a network with data providers that implement the Common API, they can use their favourite tools to query, compute and analyse data in a consistent and efficient way. 
+
+The Common API allows users to:
+
+- Find data and detailed metadata about available data sources
+- Define selections and filters on data
+- Retrieve record level data (Level 1) or compute over record level data using containerised scripts (Level 2) 
+
+Currently the API is geared at users within a research team who can program. We expect in time that graphical user interfaces will be built or adapted that take advantage of the standard and reach a wider audience more directly.
 
 ## Partners
 
