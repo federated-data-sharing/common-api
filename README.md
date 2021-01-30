@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository contains OpenAPI definitions for the Common API for Federated Data Sharing. The Common API was originally developed to facilitate collaboration and trusted data sharing networks between trusted research environments and data providers.
+This repository contains OpenAPI definitions for the Common API for Federated Data Sharing. The Common API was developed to facilitate collaboration and trusted data sharing networks between trusted research environments and data providers.
 
 ## Documentation
 
