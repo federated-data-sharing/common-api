@@ -71,7 +71,7 @@ A task can assume that inputs are provided in the `/mnt/input` folder attached t
 
 ## Next Step
 
-Understanding [Analysis plans](./User_Guide_Analysis_Plan.md) in a federated setting
+Understanding [Analysis plans](./User_Guide_Analysis_Plans.md) in a federated setting
 
 Try the API using:
 
