@@ -57,3 +57,13 @@ Details of each endpoint:
 |`/health_check`                                      |`GET`  |Get a health check of the service. |
 
 For detailed examples, refer to the [User Guide](./doc/User_Guide.md)
+
+## Partners
+
+The Common API is an open source co-development between a number of partner organisations
+
+[![ADDI logo](./doc/addi-logo.png "ADDI logo")](https://www.alzheimersdata.org/)
+&nbsp;&nbsp;&nbsp;&nbsp;
+[![ICODA Research logo](./doc/icoda-research-logo.png "Aridhia DRE Logo")](https://www.icoda-research.org) 
+&nbsp;&nbsp;&nbsp;&nbsp;
+[![Aridhia DRE logo](./doc/aridhia-dre-logo.png "Aridhia DRE Logo")](https://www.aridhia.com) 
