@@ -1,6 +1,6 @@
 # Background Concepts
 
-> Back to the [User Guide](./User_Guide.md)
+> Back to the [main page](./User_Guide.md)
 
 ## History
 
@@ -53,6 +53,6 @@ Examples below are provided in `R`, `python` and `curl` in a Linux environment o
 
 > Note that for simplicity and portability, code should be developed in Linux compatible environments.
 
-## Next Step
+## Next Steps
 
 Understanding the [Key Payloads](./User_Guide_Key_Payloads.md) for API calls.

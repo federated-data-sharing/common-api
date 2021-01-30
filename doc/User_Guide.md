@@ -7,6 +7,7 @@
 - Introduction - this file
 - [Background_Concepts](./User_Guide_Background.md)
 - Understanding [Analysis plans](./User_Guide_Analysis_Plans.md) in a federated setting
+- [Containerising scripts](./User_Guide_Containerising_Tasks.md)
 - [Key Payloads](./User_Guide_Key_Payloads.md)
 - [Command Line](./User_Guide_CLI.md) - e.g. with `curl`
 - [Python](./User_Guide_Python.md)
