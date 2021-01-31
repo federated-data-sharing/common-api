@@ -2,11 +2,19 @@
 
 > Back to the main [README](../README.md)
 
-This API originated in a strawman implementation of a federated data sharing API for an international collaboration on data sharing and federated compute. The collaboration will be launched later in 2020 and more details added. This document summarises the approach that led to the Common API.
+## Introduction
+
+This API originated in a strawman implementation of a federated data sharing API for an international collaboration on data sharing and federated compute.  It began with support for a project focused on Alzheimer's and other dementias, [launched in November 2020](https://www.alzheimersdata.org/news/addi-press-release) as the [Alzheimers Disease Data Initiative (ADDI)](https://www.alzheimersdata.org). The objective here was to be able to analyse data in a consistent way, even if some of the of interest could not travel from a data repository. The successful [pilot](https://www.alzheimersdata.org/ad-workbench/pilot-phase) brought together leading groups in the AD research community including [Dementias Platform UK](https://www.dementiasplatform.uk/) and their databank at [UKSerp, Swansea University](https://serp.ac.uk/serp-uk/), [Critical Path Institute](https://c-path.org/) and [GAAIN](http://www.gaain.org/) working with technical partners including [Aridhia Informatics](https://www.aridhia.com).
+
+Since the initial pilot, the API has also been picked up for use by the [International COVID-19 Data Alliance](https://icoda-research.org/) as it builds out it's initiative and is under also investigation for usage by [Health Data Research UK](https://www.hdruk.ac.uk/) as both look to increase data usage and sharing in a controlled fashion, supporting the [UK ONS five safes model](https://blog.ons.gov.uk/2017/01/27/the-five-safes-data-privacy-at-ons/). We expect the API to evolve rapidly throughout 2021 as it's usage scales across these initiatives and we warmly welcome new collaborators & participants.
+
+This document summarises the approach that led to the Common API.
+
+> Please [get in touch](mailto:info@fds-api.org) if you would like to learn more and participate in this effort.
 
 ## Approach
 
-Imagine a narrative for a research user who needs to access data. What is their user experience flow, how is that supported by underlying APIs provided by data platforms.
+Imagine a narrative for a research user who needs to access data from multiple data repositories, each with their own systems and processes. What is their user experience flow, how is that supported by underlying APIs provided by data platforms? Could that situation be improved through a Common API?
 
 For the implementation it should not be too important what their study is about - it might impact researcher accreditation and the type of UX we might want to provide for selection & filtering but not for the generic, Common API. 
 
