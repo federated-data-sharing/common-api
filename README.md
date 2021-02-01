@@ -8,7 +8,6 @@ This repository contains OpenAPI definitions for the Common API for Federated Da
 
 - [API Overview](./doc/API_Overview.md)
 - [User Guide](./doc/User_Guide.md)
-- Reference implementation - Coming Soon
 - [Origins](./doc/Origins.md)
 - A separate repository provides [Worked examples](https://github.com/federated-data-sharing/common-api-examples)
 - *Coming Soon*  A reference implementation is being developed to facilitate the technical choices for data providers.
