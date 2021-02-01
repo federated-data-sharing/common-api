@@ -25,7 +25,7 @@ By adopting the API, a data provider and their network can implement “connecto
 Rather than reinventing the wheel, the Common API **adopts and adapts** existing standards efforts 
 
 - The API is defined Open API specifications.
-- API endpoints should be authenticated using OAuth tokens (out of band for this version)
+- API endpoints should be authenticated using OAuth2 (will be mandated in future versions)
 - Descriptive metadata is defined in a variant of the [W3C DCAT](https://www.w3.org/TR/vocab-dcat-2/) standard and a simple data dictionary model.
 - Selections are defined in [GraphQL](https://graphql.org/) as an abstraction over querying, selection and filtering
 - Federated computations are defined in a variant of the [GA4GH Task Execution Service (TES) API](http://ga4gh.github.io/task-execution-schemas/) 
@@ -69,3 +69,5 @@ Details of each endpoint:
 |`/tasks/{task_id}`                                   |`GET`  | N/A         | JSON - task details | Get task details including status. If available, includes a link to the output of the task|
 |`/tasks/{task_id}/cancel`                            |`POST` | N/A         | JSON - task status  |Cancel a task|
 |`/health_check`                                      |`GET`  | N/A         | JSON      | Get a health check of the service. |
+
+> Note that the following endpoints are experimental at version 1.1: `/selection/beacon`, `/selection/preview` and `/selection/profile` - they are expected to be firmed up in later versions.
