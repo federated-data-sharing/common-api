@@ -16,6 +16,7 @@ A separate repository provides [Worked examples](https://github.com/federated-da
 <table>
     <tr>
         <td valign="top">
+        
 **For Data providers**
 
 A data provider may be an existing data repository or platform, or groups managing research data at their institutions. They have complex and varying data governance constraints and technical capabiliities which means that contributing data to research projects or more data sharing in a network may be difficult. 
