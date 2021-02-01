@@ -57,7 +57,7 @@ The Common API is an open source co-development between a number of partner orga
 [![ICODA Research logo](./doc/icoda-research-logo.png "ICODA Research Logo")](https://www.icoda-research.org) 
 &nbsp;&nbsp;&nbsp;&nbsp;
 [![HDR UK logo](./doc/hdruk-logo.png "HDR UK Logo")](https://www.hdruk.ac.uk) 
-&nbsp;&nbsp;&nbsp;&nbsp;
+
 [![Aridhia DRE logo](./doc/aridhia-dre-logo.png "Aridhia DRE Logo")](https://www.aridhia.com) 
 
 ## Acknowledgments
