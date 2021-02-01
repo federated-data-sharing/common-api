@@ -10,13 +10,13 @@ This repository contains OpenAPI definitions for the Common API for Federated Da
 - [User Guide](./doc/User_Guide.md)
 - Reference implementation - Coming Soon
 - [Origins](./doc/Origins.md)
-
-A separate repository provides [Worked examples](https://github.com/federated-data-sharing/common-api-examples)
+- A separate repository provides [Worked examples](https://github.com/federated-data-sharing/common-api-examples)
+- *Coming Soon*  A reference implementation is being developed to facilitate the technical choices for data providers.
 
 <table>
     <tr>
         <td valign="top">
-        
+
 **For Data providers**
 
 A data provider may be an existing data repository or platform, or groups managing research data at their institutions. They have complex and varying data governance constraints and technical capabiliities which means that contributing data to research projects or more data sharing in a network may be difficult. 
@@ -46,8 +46,6 @@ Currently the API is geared at users within a research team who can program. We 
         </td>
     </tr>
 </table>
-
-> A reference implementation is being developed to facilitate the technical choices for data providers.
 
 ## Partners
 
