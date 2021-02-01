@@ -13,9 +13,12 @@ This repository contains OpenAPI definitions for the Common API for Federated Da
 
 A separate repository provides [Worked examples](https://github.com/federated-data-sharing/common-api-examples)
 
-## For Data providers
+<table>
+    <tr>
+        <td valign="top">
+**For Data providers**
 
-A data provider may be an existing data repository or platform, or groups managing research data at their institutions. They have complex and varying data governance constraints and technical capabiliities which means that contributing data to research projects or more data sharing in a network may be difficult.
+A data provider may be an existing data repository or platform, or groups managing research data at their institutions. They have complex and varying data governance constraints and technical capabiliities which means that contributing data to research projects or more data sharing in a network may be difficult. 
 
 The Common API approach allows data providers to choose how they join a collaboration network.
 
@@ -26,10 +29,9 @@ The Common API approach allows data providers to choose how they join a collabor
 Level 0 is provided by a TRE, while data providers must implement Level 1 or Level 2 using their own infrastructure.
 
 Data providers are often in multiple collaborations at the same time. Investment in a Level 1 and Level 2 implementation can be repurposed for more than one network.
-
-> A reference implementation is being developed to facilitate the technical choices for data providers.
-
-## For Data users
+        </td>
+        <td valign="top">
+**For Data users**
 
 A researcher or group of researchers working with multiple data sources have to navigate varying access mechanisms and APIs. By working in a network with data providers that implement the Common API, they can use their favourite tools to query, compute and analyse data in a consistent and efficient way. 
 
@@ -40,6 +42,11 @@ The Common API allows users to:
 - Retrieve record level data (Level 1) or compute over record level data using containerised scripts (Level 2) 
 
 Currently the API is geared at users within a research team who can program. We expect in time that graphical user interfaces will be built or adapted that take advantage of the standard and reach a wider audience more directly.
+        </td>
+    </tr>
+</table>
+
+> A reference implementation is being developed to facilitate the technical choices for data providers.
 
 ## Partners
 
@@ -52,6 +59,15 @@ The Common API is an open source co-development between a number of partner orga
 [![HDR UK logo](./doc/hdruk-logo.png "HDR UK Logo")](https://www.hdruk.ac.uk) 
 &nbsp;&nbsp;&nbsp;&nbsp;
 [![Aridhia DRE logo](./doc/aridhia-dre-logo.png "Aridhia DRE Logo")](https://www.aridhia.com) 
+
+## Acknowledgments
+
+The Common API gratefully builds on work from standardisation communities:  
+
+- [World Wide Web Consortium (W3C)](https://www.w3.org/)
+- [GraphQL Foundation](https://foundation.graphql.org/)
+- [Global Alliance for Genomics and Health (GA4GH)](https://www.ga4gh.org/)
+- [IETF](https://www.ietf.org/) OAuth Working Group - see https://oauth.net/2/
 
 ## Contributing
 
