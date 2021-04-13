@@ -34,7 +34,7 @@ In return, you should revisit your analysis plan and structure it to the remote 
 
 Examples of staging or phasing analysis might reflect a standard research or data science life cycle:
 
-- exploratory analysis: systematically validating, summarising or exploring the remote data early on in orde
+- exploratory analysis: systematically validating, summarising or exploring the remote data early on in order to define the main statistical analysis
 - quality checks, outlier analysis
 - sampling
 - visualisation
@@ -64,8 +64,6 @@ For example, we can imagine a table called `virtual_cohort` with fields that inc
 }
 ```
 More details of how define GraphQL queries can be found on the [community pages](https://graphql.org/learn/) - bear in mind for this use case, we only need to know about selection *queries* and can ignore schemas and mutations.
-
-
 
 ## Next steps
 

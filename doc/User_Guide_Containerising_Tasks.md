@@ -6,7 +6,7 @@
 
 In order to execute a remote computation task, your analysis code must be packaged up in a docker container. 
 
-> For simplicity we use the word "script" for this code as this is common data science but your could be anything that is containerised including complex programmes with library or package dependencies all encapsulated within the container.
+> For simplicity we use the word "script" for this code as this is common data science but your container could be any program that can be run in a docker container, including complex programmes with library or package dependencies all encapsulated within the container.
 
 ## Workflow
 
@@ -22,7 +22,12 @@ A set of conventions set out how you should expect inputs to your containers or 
 
 ![Reading and writing from the container](./sketch_docker.jpg)
 
-When running a federated task in a more complex scenario, the same container might be used across multiple sites, or a selection filter might process only some of the data available at a given site. When combining data, it is useful to consider what 'post-processing' produces the final output you require:
+Federated analysis can be run on more than one node or site. When running a federated task in that more complex scenario, the same container might be used across multiple sites, or a selection filter might process only some of the data available at a given site. In this case it is important to consider a two stage process:
+
+- distribute the code to each site and obtain intermediate results
+- combine data in a post-processing step
+
+The 'post-processing' step is what produced the final output you are aiming for:
 
 ![Overview](./sketch_full.jpg)
 

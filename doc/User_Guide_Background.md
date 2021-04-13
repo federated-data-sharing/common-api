@@ -10,7 +10,7 @@ Federated Analysis and data sharing is a strategy to network data platforms and 
 
 - site - a data repository implementing the API
 - client - a user's programme interacting with the API
-- container - a Docker container encapsulating 
+- container - a Docker container encapsulating the analysis or computation require
 
 ## High-level workflow
 
@@ -45,9 +45,9 @@ For more details, see the [API Overview](./API_Overview.md)
 
 ## Accessing the API
 
-The API is a RESTful standard web-based programming interface, and user can select whatever client language or tool that they want. We have tested using `curl`, `python` and `R` as well as graphical clients like Postman. We assume the user is familiar with programmatic access to [Web API](https://en.wikipedia.org/wiki/Web_API) endpoints.
+The API is a RESTful standard web-based programming interface, and the user can select whatever client language or tool that they want. We have tested using `curl`, `python` and `R` as well as graphical clients like Postman. We assume the user is familiar with programmatic access to [Web API](https://en.wikipedia.org/wiki/Web_API) endpoints.
 
-We assume the user has been provided credentials to obtain a bearer token for API requests. The method for providing a token is not currently part of the specification but in a typical [OAuth](https://en.wikipedia.org/wiki/OAuth) model, a user is provided client ID and client secret (password). Using those credentials, they call an API endpoint and obtain a token. This token is added as a header on subsequent calls. The token is intended to provide authentication AND authorisation. Sites are free to change the output of API calls based on what the individual user is authorised.
+We assume the user has been provided credentials to obtain a bearer token for API requests. The method for providing a token is not currently part of the specification but in a typical [OAuth](https://en.wikipedia.org/wiki/OAuth) model, a user is provided a client ID and client secret (password). Using those credentials, they call an API endpoint and obtain a token. This token is added as a header on subsequent calls. The token is intended to provide authentication AND authorisation. Sites are free to change the output of API calls based on what the individual user is authorised.
 
 Examples below are provided in `R`, `python` and `curl` in a Linux environment or similar.
 

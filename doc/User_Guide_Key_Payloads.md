@@ -4,7 +4,7 @@
 
 The metadata API is a read-only API to discover and navigate what data might be available at a site. The API uses specific payloads to define tasks or selections. These can be constructed programmatically or in files passed to commands and libraries.
 
-Selections are currently defined in [GraphQL](https://graphql.org/) and posted with `Content-type: plain-text`. This was chosen to abstact from specific query languages like SQL or RDF and to leverage a wider range of underlying data management technologies. A selection query is defined using GraphQL [queries](https://graphql.org/learn/queries/). Broadly speaking the structure for a query selection of fields `field1`, `field2` and `field3` fom the table `table_name` the GraphQL would look like:
+Selections are currently defined in [GraphQL](https://graphql.org/) and posted with `Content-type: plain-text`. This was chosen to abstact from specific query languages like SQL or RDF and to leverage a wider range of underlying data management technologies. A selection query is defined using GraphQL [queries](https://graphql.org/learn/queries/). Broadly speaking for a query selection of fields `field1`, `field2` and `field3` fom the table `table_name` the GraphQL would look like:
 
 ```
 {
@@ -67,7 +67,7 @@ The structure of the JSON is:
 | executors/image           | The URL of a container image (in an approved registry)            |
 | resources                 | Not enforced now but estimates the compute resources for the task |
 
-A task can assume that inputs are provided in the `/mnt/input` folder attached to their container, wheres outputs can be written to `/mnt/output`. Logs may be delivered to `/mnt/logs`.
+A task can assume that inputs are provided in the `/mnt/input` folder attached to their container, whereas outputs can be written to `/mnt/output`. Logs may be delivered to `/mnt/logs`.
 
 ## Next Step
 

@@ -6,7 +6,7 @@
 
 Using `curl` and `jq` on the command line is a low level way to interact with the API in shell scripts.
 
-We assuming the API is accessible at an endpoint `FDS_ENDPOINT`. For example, if you run the reference implementation, this will be:
+We assume the API is accessible at an endpoint `FDS_ENDPOINT`. For example, if you run the reference implementation, this will be:
 
 ```sh
 FDS_ENDPOINT="https://localhost:8443/federated-data-sharing/1.1.0"
@@ -49,7 +49,7 @@ curl $curl_opts -X GET -H "Accept: application/json"\
         "$FDS_ENDPOINT/datasets/$dataset_id/catalogue" | jq
 ```
 
-... and then get the dictionary for that dataset - not that there may multiple 'tables' within the dataset, with individual dictionaries.
+... and then get the dictionary for that dataset - note that there may multiple 'tables' within the dataset, with individual dictionaries.
 ```sh
 curl $curl_opts -X GET -H "Accept: application/json"\
      "$FDS_ENDPOINT/datasets/$dataset_id/dictionaries"\
@@ -70,7 +70,7 @@ curl $curl_opts -X POST\
      "$FDS_ENDPOINT/selection/validate" | jq
 ```
 
-To then select using that same query:
+And then select using that same query:
 ```sh
 curl $curl_opts -X POST\
      -H "Authorization: Bearer $token" -H "Accept: application/json"\
