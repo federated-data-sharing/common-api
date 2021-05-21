@@ -33,7 +33,7 @@ Sites are also free to implement the API as they wish but there are some convent
     - selection API - implemented, externally accessible
     - task API - not required
 
-- Level 2: since data cannot be shared the selection API is not only the task API is exposed 
+- Level 2: since data cannot be shared directly, the selection API is not available externally, but is still used to define the selection to be analysed using the task API: 
 
     - metadata API - implemented, externally accessible
     - selection API - implemented, only available within task protocol 

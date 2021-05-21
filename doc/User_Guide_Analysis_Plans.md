@@ -14,7 +14,7 @@ Most existing clinical research and statistics as well as the supporting librari
 - Package up some of the analysis into Docker containers and queries 
 - Develop scripts to orchestrate the whole thing for reproducibility
 
-Data platforms that implement the Common API commit to helping reduce the friction of remote access in a number of ways intended to help you:
+Data platforms that implement the Common API commit to helping reduce the friction of remote access in a number of ways intended to help you as a researcher:
 
 - Implementing a *standard* API, which means you don't have to keep learning new ways of getting metadata or processing their data
 - Providing detailed and up-to-date metadata on data they share through the API, giving you enough detail to adapt your analysis to what data is really there
@@ -43,7 +43,7 @@ Examples of staging or phasing analysis might reflect a standard research or dat
 - modelling data
 - validating models
 
-A modular and composable approach to your analysis code will allow you to iterate at each stage and if necessary combine the analysis into reproducible process. This should reduce frustrations with not having direct access to data.
+A modular and composable approach to your analysis code will allow you to iterate at each stage. This should reduce frustrations with not having direct access to data. It provides some benefit later when trying to package up your work as reproducible research.
 
 ## Defining a selection
 

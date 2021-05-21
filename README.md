@@ -26,9 +26,9 @@ The Common API approach allows data providers to choose how they join a collabor
 
 - Level 0: transferring data directly for hosting to a trusted research environment (TRE)
 - Level 1: providing remote access to data
-- Level 2: providing a  data providers and data users in biomedical reserach 
+- Level 2: providing remote computation on data held at source
 
-Level 0 is provided by a TRE, while data providers must implement Level 1 or Level 2 using their own infrastructure.
+Level 0 is provided by a Trusted Research Environment (TRE), while data providers must implement Level 1 or Level 2 using their own infrastructure.
 
 Data providers are often in multiple collaborations at the same time. Investment in a Level 1 and Level 2 implementation can be repurposed for more than one network.
         </td>
