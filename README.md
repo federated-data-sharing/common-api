@@ -1,11 +1,10 @@
 # Federated Data Sharing Common API
 
-<p style="background-color: lightblue; color: black; padding: 5px;">
-    Our first Common API Community Meeting is planned for <b>1600 - 1800 UK time Thursday 3rd June 2021</b>. Other time zones: 1500 UTC, 1700 CET, 0800 PDT, 1100 EDT, 2030 India, 0000 Japan, 0100 Sydney/Brisbane.
-</p>
-<p style="background-color: lightblue; color: black; padding: 5px;">
-    Please contact the <a href="mailto:info@fds-api.org">maintainers of the repository</a> if you'd like to find out more or attend.
-</p>
+## Upcoming community meeting
+
+Our first Common API Community Meeting is planned for **1600 - 1800 UK time Thursday 3rd June 2021**. Other time zones: 1500 UTC, 1700 CET, 0800 PDT, 1100 EDT, 2030 India, 0000 Japan, 0100 Sydney/Brisbane.
+
+Please contact the [maintainers of the repository](mailto:info@fds-api.org) if you'd like to find out more or attend.
 
 ## Introduction
 
