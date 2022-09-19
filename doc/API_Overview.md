@@ -50,24 +50,26 @@ For maximum flexibility each section of the Common API is defined in separate gi
 
 Details of each endpoint:
 
-|Endpoint                                             |HTTP   | Payload     | Result    | Summary                                                    |
-|:----------------------------------------------------|:------|:------------|:----------|:----------------------------------------------------------|
-|`/datasets`                                          |`GET`  | N/A         | JSON      | Get a list of available datasets. Shows the list of all datasets available for querying. |
-|`/datasets/{datasetid}`                              |`GET`  | N/A         | JSON      | Get Catalogue entry (metadata) and Dictionaries (field descriptions) for dataset. Returns the catalogue metadata and a list of field descriptions for a specified dataset (by dataset ID). |
-|`/datasets/{datasetid}/catalogue`                    |`GET`  | N/A         | DCAT JSON | Get Catalogue entry (metadata) for dataset. Returns the catalogue metadata for a specified dataset (by dataset ID). |
-|`/datasets/{datasetid}/dictionaries`                 |`GET`  | N/A         | Dictionary JSON | Get Dictionaries (field descriptions) for dataset. Returns a list of field descriptions for each table within a specified dataset (by dataset ID). |
-|`/datasets/{datasetid}/dictionaries/{tableid}`       |`GET`  | N/A         | Dictionary JSON | Get a single dataset Dictionary for a specified table. Returns a set field descriptions for the specified table (by table ID) within a specified dataset (by dataset ID). |
-|`/selection/validate`                                |`POST` | GraphQL     | JSON      | Validate a given selection query. With a simple GraphQL query, check whether the query is valid and corresponds to real fields at this location.  |
-|`/selection/beacon`                                  |`POST` | GraphQL     | JSON      | Get a Beacon (T/F) for a specified data selection. With a simple Graph QL query, check which locations contain data relevant to a specific query. |
-|`/selection/select`                                  |`POST` | GraphQL     | JSON - data selected | Perform a selection operation on a dataset. With a simple Graph QL query, returns the full selection of data in a JSON or .csv format. |
-|`/selection/preview`                                 |`POST` | GraphQL     | JSON - data preview | Preview the results of a selection operation on a dataset. With a simple Graph QL query, returns a small sample of the selection in a JSON or .csv format.  |
-|`/selection/profile`                                 |`POST` | GraphQL     | JSON - summary | Get a profile of a selection operation on a dataset. Returns a set of metrics for the given selection operation.  |
-|`/tasks/service-info`                                |`GET`  | N/A         | JSON      | Get service information about the service,such as storage details, resource availability, and other documentation|
-|`/tasks`                                             |`GET`  | N/A         | JSON      | Get a list of of tasks for the current user|
-|`/tasks`                                             |`POST` | Task spec   | JSON - with task ID | Create a new task using a task specification (links a selection query and containerised computation task)|
-|`/tasks/validate`                                    |`POST` | Task spec   | JSON      |Validate a task specification|
-|`/tasks/{task_id}`                                   |`GET`  | N/A         | JSON - task details | Get task details including status. If available, includes a link to the output of the task|
-|`/tasks/{task_id}/cancel`                            |`POST` | N/A         | JSON - task status  |Cancel a task|
-|`/health_check`                                      |`GET`  | N/A         | JSON      | Get a health check of the service. |
+|Available |Endpoint                                             |HTTP   | Payload     | Result    | Summary                         |
+|:---- |:---------------------------------------------|:------|:------------|:----------|:----------------------------------------------------------|
+|:heavy_check_mark: |`/health_check`                                      |`GET`  | N/A         | JSON      | Get a health check of the service. |
+|:heavy_check_mark: |`/service-info`                                      |`GET`  | N/A         | JSON      | Get the FDSA general info set on the administrator API. |
+|:heavy_check_mark: |`/datasets`                                          |`GET`  | N/A         | JSON      | Get a list of available datasets. Shows the list of all datasets available for querying. |
+|:heavy_check_mark: |`/datasets/{datasetid}`                              |`GET`  | N/A         | JSON      | Get Catalogue entry (metadata) and Dictionaries (field descriptions) for dataset. Returns the catalogue metadata and a list of field descriptions for a specified dataset (by dataset ID). |
+|:heavy_check_mark: |`/datasets/{datasetid}/catalogue`                    |`GET`  | N/A         | DCAT JSON | Get Catalogue entry (metadata) for dataset. Returns the catalogue metadata for a specified dataset (by dataset ID). |
+|:heavy_check_mark: |`/datasets/{datasetid}/dictionaries`                 |`GET`  | N/A         | Dictionary JSON | Get Dictionaries (field descriptions) for dataset. Returns a list of field descriptions for each table within a specified dataset (by dataset ID). |
+|:heavy_check_mark: |`/datasets/{datasetid}/dictionaries/{tableid}`       |`GET`  | N/A         | Dictionary JSON | Get a single dataset Dictionary for a specified table. Returns a set field descriptions for the specified table (by table ID) within a specified dataset (by dataset ID). |
+|:heavy_check_mark: |`/selection/validate`                                |`POST` | GraphQL     | JSON      | Validate a given selection query. With a simple GraphQL query, check whether the query is valid and corresponds to real fields at this location.  |
+|:heavy_check_mark: |`/selection/beacon`                                  |`POST` | GraphQL     | JSON      | Get a Beacon (T/F) for a specified data selection. With a simple Graph QL query, check which locations contain data relevant to a specific query. |
+|:heavy_check_mark: |`/selection/select`                                  |`POST` | GraphQL     | JSON - data selected | Perform a selection operation on a dataset. With a simple Graph QL query, returns the full selection of data in a JSON or .csv format. |
+|:x: |`/selection/preview`                                 |`POST` | GraphQL     | JSON - data preview | Preview the results of a selection operation on a dataset. With a simple Graph QL query, returns a small sample of the selection in a JSON or .csv format.  |
+|:x: |`/selection/profile`                                 |`POST` | GraphQL     | JSON - summary | Get a profile of a selection operation on a dataset. Returns a set of metrics for the given selection operation.  |
+|:heavy_check_mark: |`/tasks/service-info`                                |`GET`  | N/A         | JSON      | Get service information about the service,such as storage details, resource availability, and other documentation|
+|:heavy_check_mark: |`/tasks`                                             |`GET`  | N/A         | JSON      | Get a list of of tasks for the current user|
+|:heavy_check_mark: |`/tasks`                                             |`POST` | Task spec   | JSON - with task ID | Create a new task using a task specification (links a selection query and containerised computation task)|
+|:heavy_check_mark: |`/tasks/validate`                                    |`POST` | Task spec   | JSON      |Validate a task specification|
+|:heavy_check_mark: |`/tasks/{task_id}`                                   |`GET`  | N/A         | JSON - task details | Get task details including status. If available, includes a link to the output of the task|
+|:heavy_check_mark: |`/tasks/{task_id}/cancel`                            |`POST` | N/A         | JSON - task status  |Cancel a task|
+|:heavy_check_mark: |`/tasks/{task_uuid}/results`                         |`GET`  | N/A         | ZIP | Get a specific COMPLETED task results. |
 
 > Note that the following endpoints are experimental at version 1.1: `/selection/beacon`, `/selection/preview` and `/selection/profile` - they are expected to be firmed up in later versions.
